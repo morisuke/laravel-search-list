@@ -12,7 +12,7 @@
 articlesメソッドを実装し、設定項目を記述する。
 
 ```php
-use App\Http\Requests\SearchRequest;
+use Morisuke\SearchList\Http\Requests\SearchRequest;
 
 class ProductSearchRequest extends SearchRequest
 {
