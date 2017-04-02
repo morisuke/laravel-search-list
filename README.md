@@ -48,7 +48,7 @@ class ProductSearchRequest extends SearchRequest
 
 ### Apply SearchTrait to the search target model
 
-Model::search\(SearchRequestInterface $request\) is given.
+```Model::search(SearchRequestInterface $request)``` is given.
 
 ```php
 use Morisuke\SearchList\Traits\SearchTrait;
@@ -64,7 +64,7 @@ class Products extends Model
 You can get instances of classes typed with $search.  
 When search is called, the search condition is applied to the Query object.
 
-Finally calling paginate will get the ** ListViewComponents ** object.
+Finally calling paginate will get the **ListViewComponents** object.
 
 ```php
 use App\Models\Products;
@@ -83,8 +83,8 @@ class ProductsController extends Controller
 
 ### Render search box
 
-** ListViewComponents ** Objects are given a paginator interface.  
-Since the paginator held internally is appends to the search condition, it is enough to hit links \(\).
+**ListViewComponents** Objects are given a paginator interface.  
+Since the paginator held internally is appends to the search condition, it is enough to hit ```links()```.
 
 ```php
 // Render search box
