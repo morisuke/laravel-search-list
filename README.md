@@ -1,15 +1,14 @@
-# Laravel Search Paginator-List Module
+# Laravel Pagination Search Module
 
 ## Description
 
-本モジュールは設定値から検索フォームのHTMLを自動生成する機能と、  
-そのフォームからsubmitされたgetパラメータを検索句としてQueryオブジェクトに適用する機能を提供する。
+This module provides the function to automatically generate the search form HTML from the setting value and the function to apply the get parameter submitted from the form to the Query object as a search phrase.
 
 ## Usage
 
-### SearchRequestを継承したクラスを実装
+### Implement class inheriting SearchRequest
 
-articlesメソッドを実装し、設定項目を記述する。
+Implement the articles method and describe the setting.
 
 ```php
 use Morisuke\SearchList\Http\Requests\SearchRequest;
@@ -28,9 +27,9 @@ class ProductSearchRequest extends SearchRequest
 				'field'   => 'products.status',
 				'type'    => 'select',
 				'options' => [
-					1 => '公開',
-					2 => '非公開',
-					3 => '削除',
+					1 => 'public',
+					2 => 'private',
+					3 => 'remove',
 				],
 			],
 			'sales_start_date' => [
@@ -47,9 +46,9 @@ class ProductSearchRequest extends SearchRequest
 }
 ```
 
-### 検索対象のModelにSearchTraitを適用
+### Apply SearchTrait to the search target model
 
-Model::search\(SearchRequestInterface $request\) が付与される。
+Model::search\(SearchRequestInterface $request\) is given.
 
 ```php
 use Morisuke\SearchList\Traits\SearchTrait;
@@ -60,12 +59,12 @@ class Products extends Model
 }
 ```
 
-### Controllerでタイプヒンティングに指定
+### Designate type hinting with Controller
 
-$searchでタイプヒントしたクラスのインスタンスを取得できる。  
-searchを呼び出すとQueryオブジェクトに検索条件が適用される。
+You can get instances of classes typed with $search.  
+When search is called, the search condition is applied to the Query object.
 
-最後にpaginateを呼び出すと**ListViewComponents**オブジェクトが取得される。
+Finally calling paginate will get the ** ListViewComponents ** object.
 
 ```php
 use App\Models\Products;
@@ -82,16 +81,16 @@ class ProductsController extends Controller
 }
 ```
 
-### viewで検索ボックスをレンダリング
+### Render search box
 
-**ListViewComponents**オブジェクトはpaginatorインターフェイスを付与されている。  
-内部で保持されるpaginatorは検索条件をappendsされているため、links\(\)を叩くだけでよい。
+** ListViewComponents ** Objects are given a paginator interface.  
+Since the paginator held internally is appends to the search condition, it is enough to hit links \(\).
 
 ```php
-// 検索ボックスをレンダリング
+// Render search box
 {{ $products->search() }}
 
-// 検索条件の付与されたページネータをレンダリング
+// Render the paginator given the search condition
 {{ $products->links() }}
 ```
 
