@@ -61,7 +61,7 @@ class Products extends Model
 
 ### Designate type hinting with Controller
 
-You can get instances of classes typed with $search.  
+You can get instances of classes typed with ```$search```.  
 When search is called, the search condition is applied to the Query object.
 
 Finally calling paginate will get the **ListViewComponents** object.
