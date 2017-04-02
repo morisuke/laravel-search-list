@@ -1,0 +1,21 @@
+{
+    "name": "tools/laravel-search-list",
+    "type": "library",
+    "authors": [
+        {
+            "name": "morisuke",
+            "email": "writers-high@outlook.com"
+        }
+    ],
+	"require": {
+		"php": ">=7.0",
+		"laravel/framework": "5.1.*|5.2.*|5.3.*|5.4.*"
+	},
+	"autoload": {
+		"psr-4": {
+			"Morisuke\\SearchList\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true
+}
