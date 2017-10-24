@@ -68,7 +68,7 @@ class Builder extends \Illuminate\Database\Eloquent\Builder
             $values = $search->input($name);
 
             // 値を取得出来ない、もしくはfiled名が指定されていない場合はcontinue
-            if (empty($values) || empty($article['field'])) continue;
+            if (($values !== 0 && $values !== '0' && empty($values)) || empty($article['field'])) continue;
 
             // filterメソッドが実装されているとき
             $method_name = camel_case($name) . 'Filter';
