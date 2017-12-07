@@ -100,10 +100,11 @@ class SearchView implements SearchViewInterface
     /**
      * render
      *
+     * @param string $action
      * @access public
      * @return HtmlString
      */
-    public function render(): HtmlString
+    public function render(string $action = null): HtmlString
     {
         $renders = [];
         foreach($this->all() as $view)
@@ -112,7 +113,7 @@ class SearchView implements SearchViewInterface
         }
 
         // コンテナに詰める
-        $container = view($this->generateBladeTemplateName('container'), ['contents' => new HtmlString(implode('', $renders))]);
+        $container = view($this->generateBladeTemplateName('container'), ['contents' => new HtmlString(implode('', $renders)), 'action' => $action]);
 
         // 全てのHtmlStringオブジェクトを一括でレンダリング
         return new HtmlString($container->render());

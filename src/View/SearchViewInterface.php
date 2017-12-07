@@ -50,8 +50,9 @@ interface SearchViewInterface
     /**
      * render
      *
+     * @param string $action
      * @access public
      * @return HtmlString
      */
-    public function render(): HtmlString;
+    public function render(string $action = null): HtmlString;
 }

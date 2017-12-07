@@ -48,11 +48,12 @@ class ListViewComponents implements Countable, ArrayAccess, IteratorAggregate
     /**
      * search
      *
+     * @param string $action
      * @access public
-     * @return void
+     * @return mixed
      */
-    public function search()
+    public function search(string $action = null)
     {
-        return $this->search->render();
+        return $this->search->render($action);
     }
 }
